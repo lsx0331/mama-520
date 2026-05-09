@@ -419,6 +419,17 @@
     </audio>
 
     <script>
+        // 尝试自动播放
+        document.addEventListener('DOMContentLoaded', function() {
+            var music = document.getElementById('bgMusic');
+            music.play().catch(function() {
+                // 自动播放被阻止，等用户第一次点击后播放
+                document.addEventListener('click', function() {
+                    music.play();
+                }, { once: true });
+            });
+        });
+    </script>
         // 创建飘落的花瓣
         function createPetals() {
             const petals = ['🌸', '🌺', '🌷', '💮', '🏵️', '❀'];
